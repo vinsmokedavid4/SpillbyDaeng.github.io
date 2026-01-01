@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linktree Saya</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url("51f7f727-5561-461e-ad19-5ccfe6523db7.jfif");/* Gradien biru ke ungu */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed; /* Agar background tetap saat scroll */
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            position: relative;
+            background-image: url("background.jpeg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 20px;
+            border-radius: 16px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            overflow: hidden;
+        }
+        .profile {
+            margin-bottom: 20px;
+        }
+        .profile img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid black;
+            margin-bottom: 10px;
+        }
+        h1 {
+            color: white;
+            font-size: 26px;
+            font-weight: bold;
+            -webkit-text-stroke: 1.2px black;
+        }
+        .bio {
+            color: white;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 10px 0;
+            padding: 15px 20px;
+            background-color: black;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: background-color 0.3s;
+            font-weight: bold;
+        }
+        .link:hover {
+            background-color: gray;
+        }
+        .link-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+            background-color: white;
+        }
+        .link-icon img {
+            width: 100%;
+            height: 100%;
+            fill: cover;
+            display: block;
+        }
+        .link-text {
+            flex-grow: 1;
+            text-align: center;
+        }
+        .link-dots {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 10px;
+        }
+        .link-dots svg {
+            width: 16px;
+            height: 16px;
+            fill: white;
+        }
+
+        /* SAMAKAN SUMMARY DENGAN LINK */
+        summary {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 10px 0;
+            padding: 15px 20px;
+            background-color: black;
+            color: white;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+/* HILANGKAN PANAH DEFAULT */
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+/* TEKS DI TENGAH */
+        summary .link-text {
+            flex-grow: 1;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+/* HOVER EFFECT */
+        summary:hover {
+            background-color: gray;
+        }
+
+        .sub-link {
+            display: block;
+            margin: 8px auto;
+            padding: 12px;
+            width: 90%;
+            background: white;
+            color: black;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 14px;
+        }
+        .sub-link:hover {
+            background: gray;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="profile">
+            <img src="profile.jpeg" alt="Foto Profil"> <!-- Ganti dengan URL gambar profil Anda -->
+            <h1>@rizq_zamzami</h1>
+        </div>
+        <details>
+            <summary>
+                <div class="link-icon">
+                    <img src="product1.jpeg">
+                </div>
+                <span class="link-text">Produk by Daeng</span>
+            </summary>
+
+             <div class="sub-links">
+            <a href="https://shopee.co.id/opaanlp/225091325/55202204716?__mobile__=1&gads_t_sig=VTJGc2RHVmtYMTlxTFVSVVRrdENkWVp3RFo3Mkw5czd4Z0hzdEF1WVFibTZRaTFRdUtlM1kxb3huMTk0NFoyK09kUEJ2YlE5clFUcEQ2NWZCeEpFOUxpeDhtWWJqYzVzVnJOU1MzenhZQnMrNHdqNk0yUjlldDV1RitrRXN5ZFRyaFJJR2JXeE9ldTA4Tm4zRmpheFQ3b1VUSEVqSlF1eTROZHVUZFRlbW9FPQ&mmp_pid=an_11300650200&uls_trackid=54it3i0400l6&utm_campaign=id_K8tekwjl6z&utm_content=----&utm_medium=affiliates&utm_source=an_11300650200&utm_term=e7z9xif2mfkj" class="sub-link">01. Jersey Persiba Match LS 25/26</a>
+            <a href="https://shopee.co.id/product/391837434/26384438613?gads_t_sig=VTJGc2RHVmtYMTlxTFVSVVRrdENkWVp3RFo3Mkw5czd4Z0hzdEF1WVFia0paWkZYUEpXTytiRXRBTjN2eVcvUnBleTE5UzltUUZLd0RmRTlzSC9lbno1dHhEcUpHN2lSdGxnKzhnWWoxeVNPSDQzbU1yVmRRbXoxOUxONEZxQWRJUUJ2dXhZdktZZnhTT3BvaHN6ZEpldUR5cE85U0E3emwwVjArUTRKNW84PQ&mmp_pid=an_11300650200&uls_trackid=54it3kbj01l6&utm_campaign=id_xHA3hIQtq1&utm_content=----&utm_medium=affiliates&utm_source=an_11300650200&utm_term=e7z9zfz8yidm" class="sub-link">02. Jersey Timnas Replica LS 2025</a>
+            <a href="https://shopee.co.id/product/353021106/43411170323?gads_t_sig=VTJGc2RHVmtYMTlxTFVSVVRrdENkWVp3RFo3Mkw5czd4Z0hzdEF1WVFibUtOTHlKTDE5T2NPQlI4OElDYUtNbEw4SUlYNWx6OGM2YmU4TmZTR1kwM2hYZnEyS1JkK1Z3ZzUwZG1FRmNQL0ZYUktEQ2ZoRERhc240TkkreFIvaEhuR29taVo0M3lTUWxRZXRsRXk1R015RURZUEFwMmJORi91RE5lclY0aGFVPQ&mmp_pid=an_11300650200&uls_trackid=54ita0ai00l6&utm_campaign=id_7ZsZqMrDy1&utm_content=----&utm_medium=affiliates&utm_source=an_11300650200&utm_term=e7zew8uknowm" class="sub-link">03. Celana Kulot Gajah</a>
+            <a href="https://s.shopee.co.id/3LKFUF0fAD" class="sub-link">04. SoftCase Clear Acrylic Iphone</a>
+            <a href="https://s.shopee.co.id/2LRiIXD3w5" class="sub-link">05. Pond's Men Brightening Dark Spot</a>
+            <a href="https://s.shopee.co.id/AUnQ1g6eTL" class="sub-link">06. Kaos Kaki Pendek - Almer</a>
+            <a href="https://s.shopee.co.id/4AtMU6XPPp" class="sub-link">07. Kaos Kaki Panjang - Almer</a>
+            <a href="https://s.shopee.co.id/30hP5zsZYi" class="sub-link">08. Jersey Persiba Match 2025 - Home</a>
+            <a href="https://s.shopee.co.id/5q1aTPFiBO" class="sub-link">09. Jersey UGM 4TH - Almer</a>
+            <a href="https://s.shopee.co.id/6fahT4asGK" class="sub-link">10. Jersey Timnas Home Replica SS 2025</a>
+            <a href="https://s.shopee.co.id/5q1aTbAnM9" class="sub-link">11. Jersey Timnas Away Replica SS 2025</a>
+            <a href="https://s.shopee.co.id/8V2LedKZxQ" class="sub-link">12. Boneka Cinnamlrolsnow 40CM</a>
+            </div>
+    </details>
+        </details>
+        </a>
+        <a href="https://www.tiktok.com/@daengggg11?_r=1&_t=ZS-92iCqSlgg9V" class="link">
+            <div class="link-icon">
+                <img src="tiktok.jfif" alt="TikTok">
+            </div>
+            <span class="link-text">TikTok</span>
+        </a>
+        <!-- Tambahkan tautan lainnya di sini -->
+    </div>
+</body>
+</html>
