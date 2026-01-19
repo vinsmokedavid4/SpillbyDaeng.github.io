@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linktree Saya</title>
+    <style>
+        * {
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url("background1.jpeg");/* Gradien biru ke ungu */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed; /* Agar background tetap saat scroll */
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        @keyframes fadeUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        @keyframes fadeUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        @keyframes popIn {
+          0% {
+            transform: scale(0.6);
+            opacity: 0;
+          }
+          80% {
+            transform: scale(1.05);
+          }
+          100% {
+            transform: scale(1);
+            opacity: 1;
+          }
+        }
+        @keyframes slideIn {
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        .container {
+            background: transparent;   /* tidak ada kotak */
+            padding: 0;                /* hilangkan jarak */
+            border-radius: 0;          /* tidak membulat */
+            box-shadow: none;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            animation: fadeUp 1s ease-out;
+        }
+
+        .profile {
+            margin-bottom: 20px;
+        }
+        .profile img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid black;
+            margin-bottom: 10px;
+            animation: popIn 1s ease-out;
+        }
+        .profile a img {
+          cursor: pointer;
+        }
+
+        .photo-modal {
+          position: fixed;
+          inset: 0;
+          background: rgba(0,0,0,0.6);
+          backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px);
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          z-index: 9999;
+
+          opacity: 0;
+          pointer-events: none;
+          transition: opacity 0.4s ease;
+        }
+        .photo-modal:target {
+          opacity: 1;
+          pointer-events: auto;
+        }
+        .photo-close-area {
+          position: absolute;
+          inset: 0;
+        }
+        .photo-box {
+          position: relative;
+          animation: zoomIn 0.6s ease;
+        }
+        .photo-box img {
+          max-width: 90vw;
+          max-height: 90vh;
+          border-radius: 18px;
+          box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+        }
+        .photo-close {
+          position: absolute;
+          top: -12px;
+          right: -12px;
+          width: 36px;
+          height: 36px;
+          background: black;
+          color: white;
+          border-radius: 50%;
+          font-size: 20px;
+          font-weight: bold;
+          text-decoration: none;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+          transition: transform 0.3s ease, background 0.3s ease;
+        }
+        .photo-close:hover {
+          background: #e63946;
+          transform: scale(1.1);
+        }
+
+/* ANIMASI ZOOM */
+        @keyframes zoomIn {
+          from {
+            transform: scale(0.75);
+            opacity: 0;
+          }
+          to {
+            transform: scale(1);
+            opacity: 1;
+          }
+        }
+        h1 {
+            color: white;
+            font-size: 26px;
+            font-weight: bold;
+            -webkit-text-stroke: 1.2px black;
+            animation: fadeUp 1.2s ease-out;
+        }
+        .bio {
+            color: white;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .link,
+        summary {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 10px 0;
+            padding: 15px 20px;
+            background-color: black;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: background-color 0.3s;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        .link:hover,
+        summary:hover {
+            background-color: gray;
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+        .link-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+            background-color: white;
+        }
+        .link-icon img {
+            width: 100%;
+            height: 100%;
+            fill: cover;
+            display: block;
+        }
+        .link-text {
+            flex-grow: 1;
+            text-align: center;
+        }
+        .link-dots {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 10px;
+        }
+        .link-dots svg {
+            width: 16px;
+            height: 16px;
+            fill: white;
+        }
+        .ig-link {
+          color: white;
+          text-decoration: none;
+          -webkit-text-stroke: 1.2px black;
+          transition: transform 0.3s ease, color 0.3s ease;
+        }
+        .ig-link:hover {
+          color: gray;
+          transform: scale(1.05);
+        }
+
+        /* SAMAKAN SUMMARY DENGAN LINK */
+        summary {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 10px 0;
+            padding: 15px 20px;
+            background-color: black;
+            color: white;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+/* HILANGKAN PANAH DEFAULT */
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+/* TEKS DI TENGAH */
+        summary .link-text {
+            flex-grow: 1;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+/* HOVER EFFECT */
+        summary:hover {
+            background-color: gray;
+        }
+        details > .sub-link {
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.6s ease;
+        }
+        details[open] > .sub-link {
+          max-height: 3000px;
+        }
+        .sub-link {
+            display: block;
+            margin: 8px auto;
+            padding: 12px;
+            width: 90%;
+            background: white;
+            color: black;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 14px;
+
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: slideIn 0.4s ease forwards;
+        }
+        .sub-link:nth-child(1)  { animation-delay: 0.05s; }
+        .sub-link:nth-child(2)  { animation-delay: 0.1s; }
+        .sub-link:nth-child(3)  { animation-delay: 0.15s; }
+        .sub-link:nth-child(4)  { animation-delay: 0.2s; }
+        .sub-link:nth-child(5)  { animation-delay: 0.25s; }
+        .sub-link:nth-child(6)  { animation-delay: 0.3s; }
+        .sub-link:nth-child(7)  { animation-delay: 0.35s; }
+        .sub-link:nth-child(8)  { animation-delay: 0.4s; }
+        .sub-link:nth-child(9)  { animation-delay: 0.45s; }
+        .sub-link:nth-child(10) { animation-delay: 0.5s; }
+        .sub-link:nth-child(11)  { animation-delay: 0.55s; }
+        .sub-link:nth-child(12)  { animation-delay: 0.6s; }
+        .sub-link:nth-child(13)  { animation-delay: 0.65s; }
+        .sub-link:nth-child(14)  { animation-delay: 0.7s; }
+        .sub-link:nth-child(15)  { animation-delay: 0.75s; }
+        .sub-link:nth-child(16)  { animation-delay: 0.8s; }
+        .sub-link:nth-child(17)  { animation-delay: 0.85s; }
+        .sub-link:nth-child(18)  { animation-delay: 0.9s; }
+        .sub-link:nth-child(19)  { animation-delay: 0.95s; }
+        .sub-link:nth-child(20) { animation-delay: 1s; }
+        .sub-link:nth-child(21)  { animation-delay: 1.05s; }
+        .sub-link:nth-child(22)  { animation-delay: 1.1s; }
+        .sub-link:nth-child(23)  { animation-delay: 1.15s; }
+        .sub-link:nth-child(24)  { animation-delay: 1.2s; }
+        .sub-link:nth-child(25)  { animation-delay: 1.25s; }
+        .sub-link:nth-child(26)  { animation-delay: 1.3s; }
+        
+        .sub-link:hover {
+            background: gray;
+        }
+        @media (max-width: 480px) {
+          h1 {
+            font-size: 22px;
+          }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="profile">
+            <a href="#foto">
+              <img src="profile.jpeg" alt="Foto Profil"> <!-- Ganti dengan URL gambar profil Anda -->
+            </a>
+            <h1>
+              <a href="https://www.instagram.com/rizq_zamzami?igsh=MTFzbHZwY2xpcWt2YQ=="
+                  target="_blank"
+                  class="ig-link">
+                  @rizq_zamzami
+              </a>
+          </h1>
+        </div>
+        <details>
+            <summary>
+                <div class="link-icon">
+                    <img src="product1.jpeg">
+                </div>
+                <span class="link-text">Produk by Daeng</span>
+            </summary>
+
+             <div class="sub-links">
+            <a href="https://shopee.co.id/opaanlp/225091325/55202204716?__mobile__=1&gads_t_sig=VTJGc2RHVmtYMTlxTFVSVVRrdENkWVp3RFo3Mkw5czd4Z0hzdEF1WVFibTZRaTFRdUtlM1kxb3huMTk0NFoyK09kUEJ2YlE5clFUcEQ2NWZCeEpFOUxpeDhtWWJqYzVzVnJOU1MzenhZQnMrNHdqNk0yUjlldDV1RitrRXN5ZFRyaFJJR2JXeE9ldTA4Tm4zRmpheFQ3b1VUSEVqSlF1eTROZHVUZFRlbW9FPQ&mmp_pid=an_11300650200&uls_trackid=54it3i0400l6&utm_campaign=id_K8tekwjl6z&utm_content=----&utm_medium=affiliates&utm_source=an_11300650200&utm_term=e7z9xif2mfkj" class="sub-link">01. Jersey Persiba Match LS 25/26</a>
+            <a href="https://shopee.co.id/product/391837434/26384438613?gads_t_sig=VTJGc2RHVmtYMTlxTFVSVVRrdENkWVp3RFo3Mkw5czd4Z0hzdEF1WVFia0paWkZYUEpXTytiRXRBTjN2eVcvUnBleTE5UzltUUZLd0RmRTlzSC9lbno1dHhEcUpHN2lSdGxnKzhnWWoxeVNPSDQzbU1yVmRRbXoxOUxONEZxQWRJUUJ2dXhZdktZZnhTT3BvaHN6ZEpldUR5cE85U0E3emwwVjArUTRKNW84PQ&mmp_pid=an_11300650200&uls_trackid=54it3kbj01l6&utm_campaign=id_xHA3hIQtq1&utm_content=----&utm_medium=affiliates&utm_source=an_11300650200&utm_term=e7z9zfz8yidm" class="sub-link">02. Jersey Timnas Replica LS 2025</a>
+            <a href="https://shopee.co.id/product/353021106/43411170323?gads_t_sig=VTJGc2RHVmtYMTlxTFVSVVRrdENkWVp3RFo3Mkw5czd4Z0hzdEF1WVFibUtOTHlKTDE5T2NPQlI4OElDYUtNbEw4SUlYNWx6OGM2YmU4TmZTR1kwM2hYZnEyS1JkK1Z3ZzUwZG1FRmNQL0ZYUktEQ2ZoRERhc240TkkreFIvaEhuR29taVo0M3lTUWxRZXRsRXk1R015RURZUEFwMmJORi91RE5lclY0aGFVPQ&mmp_pid=an_11300650200&uls_trackid=54ita0ai00l6&utm_campaign=id_7ZsZqMrDy1&utm_content=----&utm_medium=affiliates&utm_source=an_11300650200&utm_term=e7zew8uknowm" class="sub-link">03. Celana Kulot Gajah</a>
+            <a href="https://s.shopee.co.id/3LKFUF0fAD" class="sub-link">04. SoftCase Clear Acrylic Iphone</a>
+            <a href="https://s.shopee.co.id/2LRiIXD3w5" class="sub-link">05. Pond's Men Brightening Dark Spot</a>
+            <a href="https://s.shopee.co.id/AUnQ1g6eTL" class="sub-link">06. Kaos Kaki Pendek - Almer</a>
+            <a href="https://s.shopee.co.id/4AtMU6XPPp" class="sub-link">07. Kaos Kaki Panjang - Almer</a>
+            <a href="https://s.shopee.co.id/30hP5zsZYi" class="sub-link">08. Jersey Persiba Match 2025 - Home</a>
+            <a href="https://s.shopee.co.id/5q1aTPFiBO" class="sub-link">09. Jersey UGM 4TH - Almer</a>
+            <a href="https://s.shopee.co.id/6fahT4asGK" class="sub-link">10. Jersey Timnas Home Replica SS 2025</a>
+            <a href="https://s.shopee.co.id/5q1aTbAnM9" class="sub-link">11. Jersey Timnas Away Replica SS 2025</a>
+            <a href="https://s.shopee.co.id/8V2LedKZxQ" class="sub-link">12. Boneka Cinnamlrolsnow 40CM</a>
+            <a href="https://s.shopee.co.id/4fq4Avo2DR" class="sub-link">13. BiuBiu Case Premium Iphone</a>
+            <a href="https://s.shopee.co.id/5AmKlyRMyS" class="sub-link">14. Kipas Angin Lejia Estetik</a>
+            <a href="https://s.shopee.co.id/6VHiMXwNNR" class="sub-link">15. Omicko - Kompor Gas Portable 2in1</a>
+            <a href="https://s.shopee.co.id/7pn5x3udN3" class="sub-link">16. Omicko - Blender BL-T12PC</a>
+            <a href="https://s.shopee.co.id/8pfd8xTy9J" class="sub-link">17. Omicko - Panci Kukusan 28cm</a>
+            <a href="https://s.shopee.co.id/4AtnaQAE0w" class="sub-link">18. Omicka - Kipas Angin Hitam Estetik Keren</a>
+            <a href="https://s.shopee.co.id/1Vt2PcweOX" class="sub-link">19. Sprei Gen Z Kotak Hitam Putih Estetik</a>
+            <a href="https://s.shopee.co.id/30hqCXD12J" class="sub-link">20. Sandal Slop Putih Comfy Empuk</a>
+            <a href="https://s.shopee.co.id/2LS9PfoBO8" class="sub-link">21. Jaket Tracktop Vintage Tracksuit - Westgods</a>
+            <a href="https://s.shopee.co.id/5VPBBa64fJ" class="sub-link">22. Jaket Windbraker Vintage - Westgods</a>
+            <a href="https://s.shopee.co.id/8V2mlBn8ux" class="sub-link">23. Celana Dalam Pria Boxer Classic</a>
+            <a href="https://s.shopee.co.id/2g4zoZfmQE" class="sub-link">24. Celana dalam Boxer motif Tribal</a>
+            <a href="https://s.shopee.co.id/30hqDKb9OL" class="sub-link">25. Sepatu Sneakers Outdoor Pria - Weindenmann</a>
+            <a href="https://s.shopee.co.id/qdLdQlqcl" class="sub-link">26. Sepatu Casual Fort - Raingel</a>
+            </div>
+    </details>
+        </details>
+        </a>
+        <a href="https://www.tiktok.com/@daengggg11?_r=1&_t=ZS-92iCqSlgg9V" class="link">
+            <div class="link-icon">
+                <img src="tiktok.jfif" alt="TikTok">
+            </div>
+            <span class="link-text">TikTok</span>
+        </a>
+        <!-- Tambahkan tautan lainnya di sini -->
+    </div>
+    <div id="foto" class="photo-modal">
+      <a href="#" class="photo-close-area"></a>
+      <div class="photo-box">
+        <a href="#" class="photo-close">✕</a>
+        <img src="profile.jpeg" alt="Foto Profil Besar">
+      </div>
+    </div>
+</body>
+</html>
